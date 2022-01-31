@@ -1,0 +1,12 @@
+canvas{
+    background-color:rgb(211, 177, 177) ;
+    
+}
+#finput{
+    background-color: blue;
+}
+#btn{
+    display: flex;
+    justify-content: center;
+    width: auto;
+}

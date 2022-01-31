@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b-snake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas height="600" width="300" id="can"></canvas>
+   <audio src="sounds/bgms.wav" id="bgm"></audio>
+   <audio src="sounds/food.wav" id="food"></audio>
+<audio src="sounds/dead.wav" id="dead"></audio>
+   <div id="btn">
+        <button onclick="up()">up</button>
+        <button onclick="down()">down</button>
+        <button onclick="left()">left</button>
+        <button onclick="right()">right</button>
+    </div>
+    <button onclick="bgmplay()" >play</button>
+    <script src="script.js"></script>
+</body>
+</html>
