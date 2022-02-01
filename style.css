@@ -9,4 +9,21 @@ canvas{
     display: flex;
     justify-content: center;
     width: auto;
+    background-color: burlywood;
+    
+}
+body{
+    background-image: repeating-radial-gradient(rgb(238, 238, 247),rgb(113, 216, 235),rgb(170, 139, 139),rgb(53, 204, 128));
+    color:rgb(19, 13, 3);
+}
+#sc{
+    font-size: 1.3em;
+}
+.but{
+    font-size: 1.3em;
+    background-color: chocolate;
+}
+#pl{
+    font-size: 1.3em;
+    background-color: cyan;
 }
