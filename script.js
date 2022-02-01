@@ -3,12 +3,15 @@ const context=cvs.getContext("2d");
 var bgma=document.getElementById("bgm");
 var fooda=document.getElementById("food");
 var deada=document.getElementById("dead");
+var scr=document.getElementById("sc");
 console.log(cvs.offsetWidth);
 var unit=Math.floor(cvs.offsetWidth/50);
 if (cvs.offsetWidth!=1500) {
     unit=2*unit;
 }
 let d;
+var score=0;
+var newhead;
 var snake=[];
 snake[0]={
     x:0,
@@ -19,7 +22,7 @@ var food={
     y:(cvs.offsetWidth==1500)?Math.floor(Math.random() * 20)*unit:Math.floor(Math.random() * 50)*unit
 }
 var stop=0;
-
+var speed=500;
 function bgmplay() {
     bgma.play();
     bgma.loop=true;
@@ -30,28 +33,35 @@ function bgmplay() {
 
 }
 function up() {
-     d=1;
+    if (d!=3) {
+       d=1; 
+    }
+     
    
 }
 function right() {
-    d=2;
+    if(d!=4){
+    d=2;}
    
 }
 function down() {
-    d=3;
+    if(d!=1){
+    d=3;}
     
 }
 function left() {
-    d=4;
+    if(d!=2){
+    d=4;}
 }
-function dead() {
-     if(snake[0].x<0||snake[0].x==cvs.offsetWidth||snake[0].y<0||snake[0].y==600){
-            deada.play();
-            bgma.pause();
-            stop=1;
-            clearInterval(game);
+function col(head,snake) {
+    console.log(snake);
+    console.log(head);
+    for (let index = 0; index < snake.length; index++) {
+        if (snake[index].x==head.x) {
+            return true;
         }
-}
+    }
+ }
 
 function draw() {
    
@@ -68,21 +78,29 @@ function draw() {
     context.fillRect(food.x,food.y,unit,unit);
     context.strokeStyle="red";
         context.strokeRect(food.x,food.y,unit,unit);
-        dead();
-      
+        if(snake[0].x<0||snake[0].x==cvs.offsetWidth||snake[0].y<0||snake[0].y==cvs.offsetHeight){
+            deada.play();
+            bgma.pause();
+            stop=1;
+            clearInterval(game);
+        }
         var snakex=snake[0].x;
         var snakey=snake[0].y;
        
         //console.log(food.x);
         if ((snake[0].x==food.x)&&(snake[0].y==food.y)) {
             
-                food.x=Math.floor(Math.random() * 50)*30;
-                food.y=Math.floor(Math.random() * 20)*30;
+                food.x=(cvs.offsetWidth==1500)?Math.floor(Math.random() * 50)*unit:Math.floor(Math.random() * 25)*unit;
+                food.y=(cvs.offsetWidth==1500)?Math.floor(Math.random() * 20)*unit:Math.floor(Math.random() * 50)*unit;
                 fooda.play();
+                if(speed!=100){
+                speed-=20;}
+                score++;
            }
         else{
         snake.pop();
         }
+        scr.innerHTML=score;
         //if(snake[0].x<0||snake[0].x==cvs.offsetWidth||snake[0].y<0||snake[0].y==600){
          //   deada.play();
         //    clearInterval(game);
@@ -100,7 +118,7 @@ function draw() {
         snakex-=unit;
     }
     //console.log(snake.length);
-    var newhead={
+     newhead={
         x:snakex,
         y:snakey
     }
@@ -108,4 +126,4 @@ function draw() {
    
 }
 
-let game=setInterval(draw,600);
+let game=setInterval(draw,speed);
