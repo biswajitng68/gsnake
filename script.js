@@ -19,7 +19,7 @@ snake[0]={
 }
 var food={
     x:(cvs.offsetWidth==1500)?Math.floor(Math.random() * 50)*unit:Math.floor(Math.random() * 25)*unit,
-    y:(cvs.offsetWidth==1500)?Math.floor(Math.random() * 20)*unit:Math.floor(Math.random() * 50)*unit
+    y:(cvs.offsetWidth==1500)?Math.floor(Math.random() * 20)*unit:Math.floor(Math.random() * 43)*unit
 }
 var stop=0;
 var speed=500;
@@ -91,7 +91,7 @@ function draw() {
         if ((snake[0].x==food.x)&&(snake[0].y==food.y)) {
             
                 food.x=(cvs.offsetWidth==1500)?Math.floor(Math.random() * 50)*unit:Math.floor(Math.random() * 25)*unit;
-                food.y=(cvs.offsetWidth==1500)?Math.floor(Math.random() * 20)*unit:Math.floor(Math.random() * 50)*unit;
+                food.y=(cvs.offsetWidth==1500)?Math.floor(Math.random() * 20)*unit:Math.floor(Math.random() * 43)*unit;
                 fooda.play();
                 if(speed!=100){
                 speed-=20;}
